@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/','Admin\IndexController@index');
+
+// 综合查询
+Route::prefix('inquiry')->group(function(){
+    Route::get('/','Admin\InquiryController@index');
+    
 });
