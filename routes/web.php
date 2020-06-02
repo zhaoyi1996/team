@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/','Admin\IndexController@index');
+Route::middleware('login')->get('/','Admin\InquiryController@index');
 
 // 综合查询
 Route::prefix('inquiry')->group(function(){
@@ -24,7 +24,12 @@ Route::prefix('inquiry')->group(function(){
     
 });
 // 综合分析
-Route::prefix('statistic')->group(function(){
+Route::prefix('statistic')->middleware('login')->group(function(){
     Route::get('/','Admin\StatisticController@statistic');
-    
+});
+// 登录
+Route::prefix('login')->group(function(){
+    Route::get('/','Admin\LoginController@login');
+    Route::get('loginAdd','Admin\LoginController@loginAdd');//注册
+    Route::post('loginDo','Admin\LoginController@loginDo');
 });
