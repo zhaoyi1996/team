@@ -15,13 +15,20 @@
     <a href="/login" class="btn btn-info btn-sm">已经有账号了？去登录</a>
         <form action="/login/loginAddDo" method="post">
             <table >
+            @csrf
                 <tr>
-                    <td>用户名</td>
-                    <td><input type="text" name="a_name"></td>
+                    <td>管理员名称</td>
+                    <td>
+                        <input type="text" name="a_name">
+                        <span style="color:red;">{{$errors->first('a_name')}}</span>
+                    </td>
                 </tr>
                 <tr>
                     <td>密码</td>
-                    <td><input type="password" name="a_pwd"></td>
+                    <td>
+                        <input type="password" name="a_pwd">
+                        <span style="color:red;">{{$errors->first('a_pwd')}}</span>
+                    </td>
                 </tr>
                 <tr>
                     <td>管理员级别</td>
@@ -32,7 +39,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-primary">注册</button>
+                        <button type="submit" class="btn btn-primary">注册</button>
                     </td>
                 </tr>
             </table>

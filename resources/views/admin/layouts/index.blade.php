@@ -18,10 +18,10 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><a href="#">客户管理</a></li>
-                <li><a href="#">业务员管理</a></li>
-                <li><a href="">客户拜访管理</a></li>
+                <li><a href="/yewu">业务员管理</a></li>
+                <li><a href="#">客户拜访管理</a></li>
                 <li><a href="/inquiry">综合查询</a></li>
-                <li><a href="#">统计分析</a></li>
+                <li><a href="/statistic">统计分析</a></li>
                 <li><a href="#">系统管理</a></li>
             </ul>
         </div>
