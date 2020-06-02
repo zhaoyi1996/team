@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::prefix('yewu')->group(function(){
+    Route::get('create','admin\YewuController@create');
+    Route::post('store','admin\YewuController@store');
+    Route::get('/','admin\YewuController@index');
+    Route::get('destroy/{id}','admin\YewuController@destroy');
+    Route::get('edit/{id}','admin\YewuController@edit');
+    Route::post('update/{id}','admin\YewuController@update');
+
 });
