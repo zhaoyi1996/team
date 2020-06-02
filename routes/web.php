@@ -23,3 +23,8 @@ Route::prefix('inquiry')->group(function(){
     Route::get('/','Admin\InquiryController@index');
     
 });
+// 综合分析
+Route::prefix('statistic')->group(function(){
+    Route::get('/','Admin\StatisticController@statistic');
+    
+});
