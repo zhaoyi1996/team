@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+//业务员
 Route::prefix('yewu')->group(function(){
     Route::get('create','admin\YewuController@create');
     Route::post('store','admin\YewuController@store');
@@ -25,6 +27,17 @@ Route::prefix('yewu')->group(function(){
     Route::post('update/{id}','admin\YewuController@update');
 
 });
+
+//客户
+Route::prefix('kehu')->group(function(){
+    Route::get('create','admin\KehuController@create');
+    Route::post('store','admin\KehuController@store');
+    Route::get('/','admin\KehuController@index');
+    Route::get('destroy/{id}','admin\KehuController@destroy');
+    Route::get('edit/{id}','admin\KehuController@edit');
+    Route::post('update/{id}','admin\KehuController@update');
+});
+
 // 综合分析
 Route::prefix('statistic')->group(function(){
     Route::get('/','Admin\StatisticController@statistic');

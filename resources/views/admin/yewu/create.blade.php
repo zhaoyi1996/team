@@ -8,7 +8,7 @@
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<center><h2>团队开发</h2></center>
+<center><h2>业务员管理</h2></center>
 <form class="form-horizontal" role="form" method="post" action="{{url('yewu/store')}}" >
 @csrf
 	<div class="form-group">
