@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,10 +16,22 @@ class InquiryController extends Controller
         $name=request()->name;
         $url=request()->url;
         $ye_name=request()->ye_name;
+        $level=request()->level;
+        $hang=request()->hang;
+        $lai=request()->lai;
         // 拼接搜索条件
         $where=[];
         if($name){
             $where[]=['k_name','like',"%$name%"];
+        }
+        if($level){
+            $where[]=['k_level','=',$level];
+        }
+        if($hang){
+            $where[]=['k_hang','=',$hang];
+        }
+        if($lai){
+            $where[]=['k_lai','=',$lai];
         }
         if($url){
             $where[]=['k_url','like',"%$url%"];
@@ -29,6 +41,6 @@ class InquiryController extends Controller
         }
         // 查询客户信息表和客户拜访信息
         $data=Meeting::leftjoin('yewu','meeting.y_id','=','yewu.y_id')->leftjoin('kehu','meeting.k_id','=','kehu.k_id')->where($where)->paginate(3);
-        return view('admin.inquiry.index',['data'=>$data,'name'=>$name,'url'=>$url,'ye_name'=>$ye_name]);
+        return view('admin.inquiry.index',['data'=>$data,'name'=>$name,'url'=>$url,'ye_name'=>$ye_name,'level'=>$level,'hang'=>$hang,'lai'=>$lai]);
     }
 }

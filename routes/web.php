@@ -25,7 +25,6 @@ Route::prefix('yewu')->group(function(){
     Route::get('destroy/{id}','admin\YewuController@destroy');
     Route::get('edit/{id}','admin\YewuController@edit');
     Route::post('update/{id}','admin\YewuController@update');
-
 });
 
 //客户
@@ -41,5 +40,15 @@ Route::prefix('kehu')->group(function(){
 // 综合分析
 Route::prefix('statistic')->group(function(){
     Route::get('/','Admin\StatisticController@statistic');
-    
+});
+// 综合查询
+Route::prefix('inquiry')->middleware('login')->group(function(){
+    Route::get('/','Admin\InquiryController@index');
+});
+// 登录
+Route::prefix('login')->group(function(){
+    Route::get('/','Admin\LoginController@login');
+    Route::post('loginDo','Admin\LoginController@loginDo');
+    Route::get('loginAdd','Admin\LoginController@loginAdd');//注册
+    Route::post('loginAddDo','Admin\LoginController@loginAddDo');//注册
 });
