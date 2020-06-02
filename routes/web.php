@@ -25,3 +25,8 @@ Route::prefix('yewu')->group(function(){
     Route::post('update/{id}','admin\YewuController@update');
 
 });
+// 综合分析
+Route::prefix('statistic')->group(function(){
+    Route::get('/','Admin\StatisticController@statistic');
+    
+});
