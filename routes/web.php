@@ -47,7 +47,8 @@ Route::prefix('inquiry')->middleware('login')->group(function(){
 });
 // 系统管理
 Route::prefix('system')->middleware('login')->group(function(){
-    Route::get('/','admin\SystemController@system');
+    Route::get('/','admin\SystemController@system');//管理员展示
+    Route::get('systemDel/{id}','admin\SystemController@systemDel');//管理员删除
 });
 // 登录
 Route::prefix('login')->group(function(){

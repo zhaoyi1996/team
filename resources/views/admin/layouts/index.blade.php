@@ -8,7 +8,7 @@
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-@section('sidebar') 
+@section('sidebar')
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
         <div class="navbar-header">
@@ -21,7 +21,9 @@
                 @if($admin->a_level==3)
                 <li><a href="/yewu">业务员管理</a></li>
                 @endif
+                @if($admin->a_level==1)
                 <li><a href="#">客户拜访管理</a></li>
+                @endif
                 @if($admin->a_level==2)
                 <li><a href="/inquiry">综合查询</a></li>
                 <li><a href="/statistic">统计分析</a></li>
@@ -34,7 +36,6 @@
             </ul>
         </div>
         </div>
-    
     </nav>
 @show
     <div class="container"> 

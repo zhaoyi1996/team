@@ -14,8 +14,8 @@
 		</tr>
 	</thead>
 	<tbody>
-        @foreach($res as $v)
-		<tr>
+        @foreach($res as $k=>$v)
+		<tr  class="{{($k%2)!=1?'danger':'success'}}">
 			<td>{{$v->y_id}}</td>
 			<td>{{$v->y_name}}</td>
 			<td>@if($v->y_sex==1)男@else女@endif</td>
