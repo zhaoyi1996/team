@@ -1,4 +1,5 @@
 @extends('admin.layouts.index')
+<<<<<<< HEAD
 @section('title', '综合分析')
 @section('content') 
 <!DOCTYPE html>
@@ -12,6 +13,10 @@
 	
 </head>
 <body>
+=======
+@section('title', '客户管理')
+@section('content')
+>>>>>>> master
 <center><h2>团队开发</h2></center>
 <form class="form-horizontal" role="form" method="post" action="{{url('kehu/store')}}" >
 @csrf
@@ -89,6 +94,7 @@
 	</div>
 </form>
 
+
 </body>
 </html>
 @endsection
@@ -111,3 +117,4 @@
 		//
 	})
 </script>
+@endsection

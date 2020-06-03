@@ -1,4 +1,5 @@
 @extends('admin.layouts.index')
+<<<<<<< HEAD
 @section('title', '综合分析')
 @section('content') 
 <!DOCTYPE html>
@@ -12,6 +13,11 @@
 </head>
 <body>
 <center><h2>业务员管理</h2></center>
+=======
+@section('title', '业务员管理')
+@section('content')
+
+>>>>>>> master
 <form class="form-horizontal" role="form" method="post" action="{{url('yewu/store')}}" >
 @csrf
 	<div class="form-group">
@@ -49,7 +55,10 @@
 		</div>
 	</div>
 </form>
+<<<<<<< HEAD
 
 </body>
 </html>
+=======
+>>>>>>> master
 @endsection

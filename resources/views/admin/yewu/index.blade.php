@@ -1,4 +1,5 @@
 @extends('admin.layouts.index')
+<<<<<<< HEAD
 @section('title', '综合分析')
 @section('content') 
 <!DOCTYPE html>
@@ -12,6 +13,10 @@
 </head>
 <body>
 
+=======
+@section('title', '业务员管理')
+@section('content')
+>>>>>>> master
 <table class="table table-bordered">
 	<center><h3>业务员列表</h3></center>
 	<thead>
@@ -25,8 +30,8 @@
 		</tr>
 	</thead>
 	<tbody>
-        @foreach($res as $v)
-		<tr>
+        @foreach($res as $k=>$v)
+		<tr  class="{{($k%2)!=1?'danger':'success'}}">
 			<td>{{$v->y_id}}</td>
 			<td>{{$v->y_name}}</td>
 			<td>@if($v->y_sex==1)男@else女@endif</td>
@@ -44,8 +49,13 @@
       </tr> 
 	</tbody>
 </table>
+<<<<<<< HEAD
 </body>
 </html>
+=======
+	<center>{{$res->links()}}</center>
+
+>>>>>>> master
 <script src="/static/jquery.min.js"></script>
 <script>
     $(function(){
@@ -55,17 +65,14 @@
                 $.get(
                     '/yewu/destroy/'+y_id,
                     function(res){
-                        if(res!=0){
-                            location.href='yewu';
-                            alert(res);
-                        }else{
-                            location.href='yewu';
-                            alert(res);
-                        }
-                        
+                    	alert(res);
                     }
                 )
+<<<<<<< HEAD
             }
+=======
+            } 
+>>>>>>> master
         })
 		
 		//无刷新分页

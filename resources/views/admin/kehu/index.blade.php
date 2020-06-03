@@ -1,4 +1,5 @@
 @extends('admin.layouts.index')
+<<<<<<< HEAD
 @section('title', '综合分析')
 @section('content') 
 <!DOCTYPE html>
@@ -12,6 +13,10 @@
 </head>
 <body>
 
+=======
+@section('title', '客户管理')
+@section('content')
+>>>>>>> master
 <table class="table table-bordered">
 	<center><h3>客户列表</h3></center>
 	<thead>
@@ -28,8 +33,8 @@
 		</tr>
 	</thead>
 	<tbody>
-    @foreach($res as $v)
-		<tr>
+    @foreach($res as $k=>$v)
+		<tr  class="{{($k%2)!=1?'danger':'success'}}">
 			<td>{{$v->k_id}}</td>
 			<td>{{$v->k_name}}</td>
 			<td>@if($v->k_level==1)铂金@elseif($v->k_level==2)黄金@elseif($v->k_level==3)玫瑰金@else至尊黑卡@endif</td>
@@ -52,6 +57,8 @@
 </table>
 </body>
 </html>
+       <center> {{$res->links()}}</center>
+
 <script src="/static/jquery.min.js"></script>
 <script>
     $(function(){

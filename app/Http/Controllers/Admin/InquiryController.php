@@ -11,6 +11,11 @@ class InquiryController extends Controller
 {
     // 展示
     public function index(){
+        $admin=session('admin');
+        if($admin->a_level!=2){
+            // return redirect('login');
+            dd('权限不够');
+        }
         // 搜索
         // 接收搜索条件
         $name=request()->name;
