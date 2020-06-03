@@ -33,6 +33,10 @@ Route::prefix('statistic')->middleware('login')->group(function(){
 Route::prefix('inquiry')->middleware('login')->group(function(){
     Route::get('/','Admin\InquiryController@index');
 });
+// 系统管理
+Route::prefix('system')->middleware('login')->group(function(){
+    Route::get('/','Admin\SystemController@system');
+});
 // 登录
 Route::prefix('login')->group(function(){
     Route::get('/','Admin\LoginController@login');

@@ -22,7 +22,7 @@
                 <li><a href="#">客户拜访管理</a></li>
                 <li><a href="/inquiry">综合查询</a></li>
                 <li><a href="/statistic">统计分析</a></li>
-                <li><a href="#">系统管理</a></li>
+                <li><a href="/system">系统管理</a></li>
             </ul>
         </div>
         </div>
