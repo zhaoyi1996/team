@@ -4,7 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Yewu;
+use App\Kehu;
 class KehuController extends Controller
 {
     /**
@@ -13,8 +14,8 @@ class KehuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   $res = Kehu::join('yewu','yewu.y_id','=','kehu.y_id')->paginate(4);
+        return view('admin.kehu.index',['res'=>$res]);
     }
 
     /**
@@ -23,8 +24,8 @@ class KehuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   $res = Yewu::all();
+        return view('admin.kehu.create',['res'=>$res]);
     }
 
     /**
@@ -35,7 +36,11 @@ class KehuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = $request->except('_token');
+        $res = Kehu::insert($post);
+        if($res){
+            return redirect('kehu/');
+        }
     }
 
     /**
@@ -56,8 +61,9 @@ class KehuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   $res = Yewu::all();
+        $kehu = Kehu::where('k_id',$id)->first();
+        return view('admin.kehu.edit',['res'=>$res,'kehu'=>$kehu]);
     }
 
     /**
@@ -69,7 +75,11 @@ class KehuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = $request->except('_token');
+        $res =  Kehu::where('k_id',$id)->update($post);
+        if($res!==false){
+            return redirect('/kehu');
+        }
     }
 
     /**
@@ -80,6 +90,11 @@ class KehuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Kehu::where('k_id',$id)->delete();
+        if($res){
+            echo "删除成功";
+        }else{
+            echo "删除失败";
+        }
     }
 }
