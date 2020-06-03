@@ -34,11 +34,8 @@
                     <td>管理员级别</td>
                     <td>
                         <input type="radio" name="a_level" value="1" checked>业务员
-                        <input type="radio" name="a_level" value="2" >主管
-                        @php $admin=session('admin'); @endphp 
-                        @if($admin->a_level==3)
+                        <input type="radio" name="a_level" value="2" >主管                    
                         <input type="radio" name="a_level" value="3">系统管理员
-                        @endif
                     </td>
                 </tr>
                 <tr>

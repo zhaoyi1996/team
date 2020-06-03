@@ -6,6 +6,8 @@
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+
 </head>
 <body>
 @section('sidebar')
@@ -20,13 +22,12 @@
                 <li><a href="/kehu">客户管理</a></li>
             <ul class="nav navbar-nav"> 
             @php $admin=session('admin'); @endphp
-                <li><a href="/kehu">客户管理</a></li>
+                <!-- <li><a href="/yewu">业务员管理</a></li> -->
                 @if($admin->a_level==3)
-
                 <li><a href="/yewu">业务员管理</a></li>
                 @endif
                 @if($admin->a_level==1)
-                <li><a href="#">客户拜访管理</a></li>
+                <li><a href="/meeting">客户拜访管理</a></li>
                 @endif
                 @if($admin->a_level==2)
                 <li><a href="/inquiry">综合查询</a></li>

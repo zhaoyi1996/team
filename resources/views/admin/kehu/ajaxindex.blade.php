@@ -1,5 +1,5 @@
-@foreach($res as $v)
-		<tr>
+@foreach($res as $k=>$v)
+		<tr  class="{{($k%2)!=1?'danger':'success'}}">
 			<td>{{$v->k_id}}</td>
 			<td>{{$v->k_name}}</td>
 			<td>@if($v->k_level==1)铂金@elseif($v->k_level==2)黄金@elseif($v->k_level==3)玫瑰金@else至尊黑卡@endif</td>
@@ -15,8 +15,3 @@
             </td>
 		</tr>
     @endforeach 
-    <tr>
-         <td colspan="5" align="center">{{$res->links()}}</td>
-      </tr> 
-	</tbody>
-</table>

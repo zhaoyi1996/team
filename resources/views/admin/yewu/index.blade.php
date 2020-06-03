@@ -1,22 +1,7 @@
-@extends('admin.layouts.index')
-<<<<<<< HEAD
-@section('title', '综合分析')
-@section('content') 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8"> 
-	<title>团队开发</title>
-	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-=======
+@extends('admin.layouts.index') 
 @section('title', '业务员管理')
 @section('content')
->>>>>>> master
+
 <table class="table table-bordered">
 	<center><h3>业务员列表</h3></center>
 	<thead>
@@ -49,13 +34,7 @@
       </tr> 
 	</tbody>
 </table>
-<<<<<<< HEAD
-</body>
-</html>
-=======
 	<center>{{$res->links()}}</center>
-
->>>>>>> master
 <script src="/static/jquery.min.js"></script>
 <script>
     $(function(){
