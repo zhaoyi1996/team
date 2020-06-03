@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::middleware('login')->get('/','admin\LoginController@login');
 //业务员
-Route::prefix('yewu')->group(function(){
+Route::prefix('yewu')->middleware('login')->group(function(){
     Route::get('create','admin\YewuController@create');
     Route::post('store','admin\YewuController@store');
     Route::get('/','admin\YewuController@index');
@@ -28,7 +28,7 @@ Route::prefix('yewu')->group(function(){
 });
 
 //客户
-Route::prefix('kehu')->group(function(){
+Route::prefix('kehu')->middleware('login')->group(function(){
     Route::get('create','admin\KehuController@create');
     Route::post('store','admin\KehuController@store');
     Route::get('/','admin\KehuController@index');
@@ -38,21 +38,22 @@ Route::prefix('kehu')->group(function(){
 });
 
 // 综合分析
-Route::prefix('statistic')->group(function(){
-    Route::get('/','Admin\StatisticController@statistic');
+Route::prefix('statistic')->middleware('login')->group(function(){
+    Route::get('/','admin\StatisticController@statistic');
 });
 // 综合查询
 Route::prefix('inquiry')->middleware('login')->group(function(){
-    Route::get('/','Admin\InquiryController@index');
+    Route::get('/','admin\InquiryController@index');
 });
 // 系统管理
 Route::prefix('system')->middleware('login')->group(function(){
-    Route::get('/','Admin\SystemController@system');
+    Route::get('/','admin\SystemController@system');
 });
 // 登录
 Route::prefix('login')->group(function(){
-    Route::get('/','Admin\LoginController@login');
-    Route::post('loginDo','Admin\LoginController@loginDo');
-    Route::get('loginAdd','Admin\LoginController@loginAdd');//注册
-    Route::post('loginAddDo','Admin\LoginController@loginAddDo');//注册
+    Route::get('/','admin\LoginController@login');
+    Route::post('loginDo','admin\LoginController@loginDo');
+    Route::get('loginAdd','admin\LoginController@loginAdd');//注册
+    Route::post('loginAddDo','admin\LoginController@loginAddDo');//注册
+    Route::get('/loginNull','admin\LoginController@loginNull');//退出登录
 });

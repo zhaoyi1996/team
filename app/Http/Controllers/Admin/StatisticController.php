@@ -9,6 +9,11 @@ class StatisticController extends Controller
 {
     // 综合分析
     public function statistic(){
+        $admin=session('admin');
+        if($admin->a_level!=2){
+            // return redirect('login');
+            dd('权限不够');
+        }
         // 查询客户行业
         $repast=Kehu::where('k_hang',1)->count();
         $architecture=Kehu::where('k_hang',2)->count();

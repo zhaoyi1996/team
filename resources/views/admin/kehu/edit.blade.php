@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8"> 
-	<title>团队开发</title>
-	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-<center><h2>团队开发</h2></center>
+@extends('admin.layouts.index')
+@section('title', '客户管理')
+@section('content')
 <form class="form-horizontal" role="form" method="post" action="{{url('kehu/update/'.$kehu->k_id)}}" >
 @csrf
 	<div class="form-group">
@@ -84,6 +76,4 @@
 		</div>
 	</div>
 </form>
-
-</body>
-</html>
+@endsection

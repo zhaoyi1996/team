@@ -14,7 +14,13 @@ class YewuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $res = Yewu::paginate(4);
+    {   
+        $admin=session('admin');
+        if($admin->a_level==1){
+            // return redirect('login');
+            dd('权限不够');
+        }
+        $res = Yewu::paginate(4);
         return view('admin.yewu.index',['res'=>$res]);
     }
 
@@ -25,6 +31,11 @@ class YewuController extends Controller
      */
     public function create()
     {
+        $admin=session('admin');
+        if($admin->a_level==1){
+            // return redirect('login');
+            dd('权限不够');
+        }
         return view('admin.yewu.create');
     }
 
@@ -36,6 +47,11 @@ class YewuController extends Controller
      */
     public function store(Request $request)
     {
+        $admin=session('admin');
+        if($admin->a_level==1){
+            // return redirect('login');
+            dd('权限不够');
+        }
         $post = $request->except("_token");
         $res = Yewu::create($post);
         if($res){
@@ -61,7 +77,13 @@ class YewuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   $yewu = Yewu::where('y_id',$id)->first();
+    {   
+        $admin=session('admin');
+        if($admin->a_level==1){
+            // return redirect('login');
+            dd('权限不够');
+        }
+        $yewu = Yewu::where('y_id',$id)->first();
         return view('admin.yewu.edit',['yewu'=>$yewu]);
     }
 
@@ -74,6 +96,11 @@ class YewuController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $admin=session('admin');
+        if($admin->a_level==1){
+            // return redirect('login');
+            dd('权限不够');
+        }
         $post = $request->except("_token");
         $res = Yewu::where('y_id',$id)->update($post);
         if($res!==false){
@@ -89,6 +116,11 @@ class YewuController extends Controller
      */
     public function destroy($id)
     {
+        $admin=session('admin');
+        if($admin->a_level!=3){
+            // return redirect('login');
+            dd('权限不够');
+        }
         $res = Yewu::where('y_id',$id)->delete();
         if($res){
             echo "删除成功";

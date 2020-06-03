@@ -29,7 +29,7 @@ class LoginController extends Controller
             return redirect('/login');
         }
         session(['admin'=>$info]);
-        return redirect('/inquiry')->with('msg','用户名或密码错误');
+        return redirect('/kehu');
     }
     // 注册
     public function loginAdd(){
@@ -44,5 +44,10 @@ class LoginController extends Controller
         if($res){
             return redirect('/login');
         }
+    }
+    // 退出登录
+    public function loginNull(){
+        session(['admin'=>null]);
+        return redirect('/login');
     }
 }
