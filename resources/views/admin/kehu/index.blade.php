@@ -1,3 +1,6 @@
+@extends('admin.layouts.index')
+@section('title', '综合分析')
+@section('content') 
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,9 +45,11 @@
             </td>
 		</tr>
     @endforeach 
+	<tr>
+         <td colspan="5" align="center">{{$res->links()}}</td>
+      </tr> 
 	</tbody>
 </table>
-       <center> {{$res->links()}}</center>
 </body>
 </html>
 <script src="/static/jquery.min.js"></script>
@@ -67,5 +72,13 @@
                 )
             }
         })
+		//无刷新分页
+		$(document).on('click','.page-item a',function(){
+			var url = $(this).attr('href');
+			$.get(url,function(res){
+				$('tbody').html(res)
+			})
+		})
     })
 </script>
+@endsection

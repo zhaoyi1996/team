@@ -37,6 +37,19 @@ Route::prefix('kehu')->group(function(){
     Route::post('update/{id}','admin\KehuController@update');
 });
 
+//客户拜访
+
+Route::prefix('meeting')->group(function(){
+    Route::get('create','admin\MeetingController@create');
+    Route::post('addyewu','admin\MeetingController@addyewu');
+    Route::post('addkehu','admin\MeetingController@addkehu');
+    Route::post('store','admin\MeetingController@store');
+    Route::get('/','admin\MeetingController@index');
+    Route::get('destroy/{id}','admin\MeetingController@destroy');
+    Route::get('edit/{id}','admin\MeetingController@edit');
+    Route::post('update/{id}','admin\MeetingController@update');
+});
+
 // 综合分析
 Route::prefix('statistic')->group(function(){
     Route::get('/','Admin\StatisticController@statistic');

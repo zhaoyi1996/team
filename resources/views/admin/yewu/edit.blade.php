@@ -1,3 +1,6 @@
+@extends('admin.layouts.index')
+@section('title', '综合分析')
+@section('content') 
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,3 +54,4 @@
 
 </body>
 </html>
+@endsection

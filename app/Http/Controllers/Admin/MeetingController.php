@@ -5,8 +5,10 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Yewu;
+use App\Kehu;
+use App\Meeting;
 
-class YewuController extends Controller
+class MeetingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +16,14 @@ class YewuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $res = Yewu::paginate(4);
+    {   
+        $res = Meeting::leftjoin('yewu','Yewu.y_id','=','Meeting.y_id')
+        ->leftjoin('kehu','kehu.k_id','=','meeting.k_id')
+        ->paginate(4);
         if(request()->ajax()){
             return view('admin.kehu.ajaxindex',['res'=>$res]);
         }
-        return view('admin.yewu.index',['res'=>$res]);
+        return view('admin.meeting.index',['res'=>$res]);
     }
 
     /**
@@ -27,8 +32,19 @@ class YewuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.yewu.create');
+    {   $yewu = Yewu::all();
+        $kehu = Kehu::all();
+        return view('admin.meeting.create',['yewu'=>$yewu,'kehu'=>$kehu]);
+    }
+
+    public function addyewu(Request $request){
+        $id = request()->id;
+        $city = Kehu::where('y_id',$id)->get();
+        $option = '<option value="0">--请选择--</option>';
+        foreach($city as $k=>$v){
+            $option.="<option value='".$v->k_id."'>".$v->k_name."</option>";
+        }
+        return $option;
     }
 
     /**
@@ -39,10 +55,10 @@ class YewuController extends Controller
      */
     public function store(Request $request)
     {
-        $post = $request->except("_token");
-        $res = Yewu::create($post);
+        $post = $request->except('_token');
+        $res = Meeting::insert($post);
         if($res){
-            return redirect('yewu/');
+            return redirect('meeting/');
         }
     }
 
@@ -64,8 +80,8 @@ class YewuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   $yewu = Yewu::where('y_id',$id)->first();
-        return view('admin.yewu.edit',['yewu'=>$yewu]);
+    {
+        //
     }
 
     /**
@@ -77,11 +93,7 @@ class YewuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = $request->except("_token");
-        $res = Yewu::where('y_id',$id)->update($post);
-        if($res!==false){
-            return redirect('yewu');
-        }
+        //
     }
 
     /**
@@ -92,7 +104,7 @@ class YewuController extends Controller
      */
     public function destroy($id)
     {
-        $res = Yewu::where('y_id',$id)->delete();
+        $res = Meeting::where('m_id',$id)->delete();
         if($res){
             echo "删除成功";
         }else{

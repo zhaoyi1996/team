@@ -1,3 +1,6 @@
+@extends('admin.layouts.index')
+@section('title', '综合分析')
+@section('content') 
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 </head>
 <body>
 <center><h2>团队开发</h2></center>
@@ -14,7 +18,7 @@
 	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">客户姓名:</label>
 		<div class="col-sm-10">
-			<input type="text" name="k_name" class="form-control" placeholder="请输入姓名">
+			<input type="text" name="k_name" class="form-control" placeholder="请输入姓名"><span id="checkname"></span>
 		</div>
 	</div>
 
@@ -87,3 +91,23 @@
 
 </body>
 </html>
+@endsection
+<script src="/static/jquery.min.js/"></script>
+<script>
+	$(function(){
+		//名字
+		$("input[name='k_name']").blur(function(){
+			var k_name = $(this).val();
+			var knreg = /^[\u4e00-\u9fa5]+$/
+			if(k_name==''){
+				$("#checkname").html("<font color='red'>客户名称不能为空</font>");
+				return false;
+			}else if(!knreg.test(k_name)){
+				$("#checkname").html("<font color='red'>客户名称必须是中文</font>");
+				return false;
+			}
+				
+		})
+		//
+	})
+</script>

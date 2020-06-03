@@ -15,6 +15,10 @@ class KehuController extends Controller
      */
     public function index()
     {   $res = Kehu::join('yewu','yewu.y_id','=','kehu.y_id')->paginate(4);
+        //无刷新分页
+        if(request()->ajax()){
+            return view('admin.kehu.ajaxindex',['res'=>$res]);
+        }
         return view('admin.kehu.index',['res'=>$res]);
     }
 

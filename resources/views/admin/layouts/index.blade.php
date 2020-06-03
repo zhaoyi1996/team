@@ -17,7 +17,7 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li><a href="#">客户管理</a></li>
+                <li><a href="/kehu">客户管理</a></li>
                 <li><a href="/yewu">业务员管理</a></li>
                 <li><a href="#">客户拜访管理</a></li>
                 <li><a href="/inquiry">综合查询</a></li>

@@ -10,4 +10,5 @@ class Meeting extends Model
     protected $primaryKey="m_id";
     // 设置时间戳
     public $timestamps=false;
+    protected $guarded = [];
 }
